@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="nav">
+            <h1>Flashcards</h1>
+            <div>
+                <button onclick="showCreateCardBox()">New Card</button>
+                <button onclick="delFlashcards()">Practice</button>
+            </div>
+        </div>
+    </div>
+
+</header>
+<form action="/save" th:object="${flashcard}" method="POST">
+<div class="container">
+    <div class="create-box">
+        <h2 style="text-align: center; color: black;">Create Flashcard</h2>
+        <label for="term">Term</label>
+        <textarea id="term" th:field="*{term}"></textarea>
+        <br>
+        <label for="answer">Answer</label>
+        <textarea id="answer" th:field="*{answer}"></textarea>
+        <br>
+        <select th:name="topics">
+            <option value="0" selected="selected">Topic</option>
+            <option th:each="topic: ${topics}"  th:value="${topic.id}" th:text="${topic.name}">
+        </select>
+        <input th:if="${id != null}" type="hidden" th:field="*{id}"/>
+
+        <div>
+            <button type="submit" value="Save flashcard">Save</button>
+        </div>
+
+    </div>
+
+</div>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>

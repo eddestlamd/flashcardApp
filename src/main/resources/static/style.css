@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+*{
+   padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+body{
+font-family: 'Architects Daughter', cursive;
+font-size: 1rem;
+background-color: whitesmoke;
+}
+
+header{
+background-color: white;
+}
+
+button{
+padding: 8px;
+outline: none;
+cursor: pointer;
+border: 1px solid lightgray;
+border-radius: 5px;
+background-color: whitesmoke;
+}
+
+button:hover{
+background-color: rgba(0,0,0,0.1);
+}
+
+.container{
+width:95%;
+margin:auto;
+}
+
+.nav{
+display: flex;
+justify-content: space-between;
+width: 100%;
+margin: auto;
+padding: 20px 0;
+background-color: white;
+}
+
+.nav button{
+font-family: inherit;
+}
+
+.create-box{
+width: 380px;
+margin: auto;
+padding: 20px; /*all sides*/
+margin-top: 10px;
+border-radius: 5px;
+background-color: whitesmoke;
+box-shadow: 0px 2px 4px 0 black;
+}
+
+.create-box textarea{
+width: 100%;
+border-radius: 5px;
+font-family: inherit;
+border: 1px solid lightgray;
+}
+
+.create-box button{
+width: fit-content;
+}
+
+.flashcards{
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+flex-wrap: wrap;
+width: 100%;
+margin: auto;
+margin-top: 10px;
+padding: 0 10px;
+}
+
+.flashcard{}

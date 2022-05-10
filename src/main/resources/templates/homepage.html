@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="nav">
+            <h1>Flashcards</h1>
+            <div>
+                <button onclick="showCreateCardBox()">New Card</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<h1 class="spacing">popular topics</h1>
+<table style="text-align:left">
+    <tr>
+        <th>Theme</th>
+    </tr>
+    <tr th:each="flashcard : ${flashcards}">
+        <th th:text="${flashcard.theme}"></th>
+    </tr>
+</table>
+
+</body>
+</html>
+
+<!--
+<table style="text-align:left">
+    <tr>
+        <th>Theme</th>
+        <th>Term</th>
+        <th>Definition</th>
+    </tr>
+    <tr th:each="flashcard : ${flashcards}">
+        <th th:text="${flashcard.theme}"></th>
+        <th th:text="${flashcard.term}"></th>
+        <th th:text="${flashcard.definition}"></th>
+    </tr>
+</table>
+-->
