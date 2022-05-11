@@ -32,8 +32,7 @@
         <textarea id="answer" th:field="*{answer}"></textarea>
         <br>
         <select th:name="topics">
-            <option value="0" selected="selected">Topic</option>
-            <option th:each="topic: ${topics}"  th:value="${topic.id}" th:text="${topic.name}">
+            <option th:each="topic: ${topics}"  th:value="${topic.name}" th:text="${topic.name}">
         </select>
         <input th:if="${id != null}" type="hidden" th:field="*{id}"/>
 

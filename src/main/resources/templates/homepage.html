@@ -25,9 +25,16 @@
 <table style="text-align:left">
     <tr>
         <th>Theme</th>
+    <tr th:each="flashcard:${flashcards}">
+        <th th:text="${flashcard.topic.name}"></th>
+
+    </tr>
+
+
+        <th>Question</th>
     </tr>
     <tr th:each="flashcard : ${flashcards}">
-        <th th:text="${flashcard.theme}"></th>
+        <th th:text="${flashcard.term}"></th>
     </tr>
 </table>
 

@@ -2,6 +2,10 @@ package com.example.flashcardsapp;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,30 +13,29 @@ import javax.persistence.*;
 public class Flashcard {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "card_id")
-    Integer id;
+    @GeneratedValue
+    Long id;
     String term;
     String answer;
     @ManyToOne
     @JoinColumn(name = "topic_id")
-    Topic theme;
+    Topic topic;
 
     public Flashcard() {
     }
 
-    public Flashcard(Integer id, String term, String answer, Topic theme) {
+    public Flashcard(Long id, String term, String answer, Topic topic) {
         this.id = id;
         this.term = term;
         this.answer = answer;
-        this.theme = theme;
+        this.topic = topic;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,10 +56,20 @@ public class Flashcard {
     }
 
     public Topic getTheme() {
-        return theme;
+        return topic;
     }
 
     public void setTheme(Topic theme) {
-        this.theme = theme;
+        this.topic = theme;
+    }
+
+    @Override
+    public String toString() {
+        return "Flashcard{" +
+                "id=" + id +
+                ", term='" + term + '\'' +
+                ", answer='" + answer + '\'' +
+                ", theme=" + topic +
+                '}';
     }
 }

@@ -19,29 +19,32 @@ public class FlashcardController {
     TopicRepository topicRepository;
 
 
-    @GetMapping({"/"})
+    @GetMapping("/")
     public String start(Model model) {
-        List<Flashcard> flashcard = this.repository.findAll();
+        List<Flashcard> flashcard = repository.findAll();
         model.addAttribute("flashcards", flashcard);
         return "homepage";
     }
-
-    @GetMapping({"/flashcards"})
+    /*
+    @GetMapping("/flashcards")
     public String flashcards(Model model) {
         List<Flashcard> flashcard = this.repository.findAll();
         model.addAttribute("flashcards", flashcard);
-        return "flashcards";
-    }
+        return "";
+    }*/
 
-    @GetMapping({"/add"})
+    @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("flashcard", new Flashcard());
         List<Topic> topics = topicRepository.findAll();
+        model.addAttribute("topics", topics);
+
         return "flashcards";
     }
 
-    @PostMapping({"/save"})
+    @PostMapping("/save")
     public String set(@ModelAttribute Flashcard flashcard) {
+
         repository.save(flashcard);
         return "redirect:/";
     }

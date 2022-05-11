@@ -3,35 +3,35 @@ package com.example.flashcardsapp;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Topic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "topic_id")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "topic_name")
     private String name;
-    @OneToMany(mappedBy = "theme", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "topic", fetch = FetchType.LAZY)
     @JsonIgnore
-    private Set<Flashcard> flashcardSet;
+    private Set<Flashcard> box = new HashSet<>();
 
     public Topic() {
     }
 
-    public Topic(Integer id, String name, Set<Flashcard> flashcardSet) {
+    public Topic(Long id, String name, Set<Flashcard> flashcardSet) {
         this.id = id;
         this.name = name;
-        this.flashcardSet = flashcardSet;
+        this.box = flashcardSet;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,12 +43,19 @@ public class Topic {
         this.name = name;
     }
 
-    public Set<Flashcard> getFlashcardSet() {
-        return flashcardSet;
+    public Set<Flashcard> getBox() {
+        return box;
     }
 
-    public void setFlashcardSet(Set<Flashcard> flashcardSet) {
-        this.flashcardSet = flashcardSet;
+    public void setBox(Set<Flashcard> box) {
+        this.box = box;
     }
 
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
