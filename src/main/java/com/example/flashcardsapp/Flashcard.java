@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Flashcard {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String term;
     String answer;
@@ -55,12 +55,12 @@ public class Flashcard {
         this.answer = answer;
     }
 
-    public Topic getTheme() {
+    public Topic getTopic() {
         return topic;
     }
 
-    public void setTheme(Topic theme) {
-        this.topic = theme;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
     @Override

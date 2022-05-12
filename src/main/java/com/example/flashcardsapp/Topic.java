@@ -15,7 +15,6 @@ public class Topic {
     @Column(name = "topic_name")
     private String name;
     @OneToMany(mappedBy = "topic", fetch = FetchType.LAZY)
-    @JsonIgnore
     private Set<Flashcard> box = new HashSet<>();
 
     public Topic() {
