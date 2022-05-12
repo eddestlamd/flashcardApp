@@ -4,10 +4,7 @@ package com.example.flashcardsapp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +16,8 @@ public class FlashcardController {
     FlashcardRepository repository;
     @Autowired
     TopicRepository topicRepository;
+    @Autowired
+    TopicService tService;
 
 
     @GetMapping("/")
@@ -27,13 +26,6 @@ public class FlashcardController {
         model.addAttribute("flashcards", flashcard);
         return "homepage";
     }
-    /*
-    @GetMapping("/flashcards")
-    public String flashcards(Model model) {
-        List<Flashcard> flashcard = this.repository.findAll();
-        model.addAttribute("flashcards", flashcard);
-        return "";
-    }*/
 
     @GetMapping("/add")
     public String add(Model model) {
@@ -51,5 +43,22 @@ public class FlashcardController {
         flashcard.setTopic(topics);
         repository.save(flashcard);
         return "redirect:/";
+    }
+
+    @GetMapping("/practice")
+    public String chooseTopic(Model model){
+        List<Topic> topics = topicRepository.findAll();
+        model.addAttribute("topics", topics);
+        return "practice";
+    }
+
+    @GetMapping("/practice/{id}")
+    public String quiz(@PathVariable Long id, Model model){
+        Topic topic = tService.findTopic(id);
+        model.addAttribute("topic", topic);
+
+
+
+        return "quiz";
     }
 }

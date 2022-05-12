@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -14,15 +14,15 @@
         <div class="nav">
             <h1>Flashcards</h1>
             <div>
-                <button onclick="showCreateCardBox()">New Card</button>
-                <button onclick="delFlashcards()">Practice</button>
+                <button onclick="window.location.href='/add'">Add cards</button>
+                <button onclick="window.location.href='/practice'">Practice</button>
             </div>
         </div>
     </div>
 
 </header>
 <form action="/save" th:object="${flashcard}" method="POST">
-<div class="container">
+<div class="containerOne">
     <div class="create-box">
         <h2 style="text-align: center; color: black;">Create Flashcard</h2>
         <label for="term">Term</label>
