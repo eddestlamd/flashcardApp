@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="fragments/topnav :: navbar"></div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+
+                <form action="/savePlayer" th:object="${player}" method="POST">
+                    <div class="containerOne">
+                        <div class="create-box">
+                            <h2 style="text-align: center; color: black;">Register new user</h2>
+                            <label for="userName">Username</label>
+                            <input id="userName" th:field="*{username}"/>
+                            <label for="password">Password</label>
+                            <input id="password" type="password" th:field="*{pw}"/>
+                            <div>
+                                <button type="submit" value="Save player">Register and login</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

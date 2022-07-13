@@ -1,10 +1,6 @@
-package com.example.flashcardsapp;
+package com.example.flashcardsapp.flashcard;
 
-
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.sun.istack.NotNull;
-import org.springframework.lang.NonNull;
+import com.example.flashcardsapp.topic.Topic;
 
 import javax.persistence.*;
 
@@ -14,6 +10,7 @@ public class Flashcard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "card_id")
     Long id;
     String term;
     String answer;

@@ -1,4 +1,4 @@
-package com.example.flashcardsapp;
+package com.example.flashcardsapp.topic;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

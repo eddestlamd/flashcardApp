@@ -1,6 +1,6 @@
-package com.example.flashcardsapp;
+package com.example.flashcardsapp.topic;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.flashcardsapp.flashcard.Flashcard;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,6 +11,7 @@ public class Topic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "topic_id")
     private Long id;
     @Column(name = "topic_name")
     private String name;
@@ -20,10 +21,10 @@ public class Topic {
     public Topic() {
     }
 
-    public Topic(Long id, String name, Set<Flashcard> flashcardSet) {
+    public Topic(Long id, String name, Set<Flashcard> box) {
         this.id = id;
         this.name = name;
-        this.box = flashcardSet;
+        this.box = box;
     }
 
     public Long getId() {
