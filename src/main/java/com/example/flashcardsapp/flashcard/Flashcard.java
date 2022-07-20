@@ -1,22 +1,13 @@
 package com.example.flashcardsapp.flashcard;
-
 import com.example.flashcardsapp.topic.Topic;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "cards")
 public class Flashcard {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "card_id")
     Long id;
     String term;
     String answer;
-    @ManyToOne
-    @JoinColumn(name = "topic_id")
     Topic topic;
+
+    boolean isNew;
 
     public Flashcard() {
     }
@@ -59,6 +50,9 @@ public class Flashcard {
     public void setTopic(Topic topic) {
         this.topic = topic;
     }
+    public boolean isNew(){
+        return this.id == null;
+    }
 
     @Override
     public String toString() {
@@ -66,7 +60,7 @@ public class Flashcard {
                 "id=" + id +
                 ", term='" + term + '\'' +
                 ", answer='" + answer + '\'' +
-                ", theme=" + topic +
+                ", topic=" + topic +
                 '}';
     }
 }

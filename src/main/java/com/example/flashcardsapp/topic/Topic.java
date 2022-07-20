@@ -2,20 +2,16 @@ package com.example.flashcardsapp.topic;
 
 import com.example.flashcardsapp.flashcard.Flashcard;
 
-import javax.persistence.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+
 public class Topic {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "topic_id")
+
     private Long id;
-    @Column(name = "topic_name")
     private String name;
-    @OneToMany(mappedBy = "topic", fetch = FetchType.LAZY)
     private Set<Flashcard> box = new HashSet<>();
 
     public Topic() {

@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <form action="/saveTopic" th:object="${topic}" method="POST">
+                <form action="/saveTopic" th:object="${newTopic}" method="POST">
                     <div class="containerOne">
                         <div class="create-box">
                             <h2 style="text-align: center; color: black;">Create new topic</h2>
@@ -41,16 +41,14 @@
                             <textarea id="answer" th:field="*{answer}"></textarea>
                             <br>
                             <select th:name="topics">
-                                <option th:each="topic: ${topics}" th:value="${topic.id}" th:text="${topic.name}">
+                                <option th:each="topic: ${topics}" th:value="${topic.id}"  th:text="${topic.name}">
                             </select>
                             <!--  <input th:if="${id != null}" type="hidden" th:field="*{id}"/> -->
 
                             <div>
                                 <button type="submit" value="Save flashcard">Save</button>
                             </div>
-
                         </div>
-
                     </div>
                 </form>
             </div>

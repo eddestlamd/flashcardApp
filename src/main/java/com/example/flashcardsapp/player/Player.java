@@ -1,17 +1,11 @@
 package com.example.flashcardsapp.player;
 
-import javax.persistence.*;
-
-@Entity
 public class Player {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "player_id")
+
     Long id;
     String name;
     String answers;
-    @Column(name="correct_answers")
     int correctAnswers;
     String username;
     String pw;
